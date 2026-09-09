@@ -38,16 +38,17 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-20 bg-gray-50 border-b border-gray-200">
+    <section id="skills" className="py-24 lg:py-32 bg-gray-50 border-b border-gray-200">
       <div className="max-w-[90rem] mx-auto px-6">
         <motion.div 
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-10 flex flex-col items-center"
+          className="mb-24 text-center flex flex-col items-center"
         >
-          <TextPressure text="SKILLS" fontSize={48} />
-          <p className="text-gray-500 text-sm font-medium mt-4">Tools and technologies for scalable mobile apps.</p>
+          <TextPressure text="SKILLS" fontSize={60} />
+          <div className="w-20 h-1 bg-purple-600 rounded-full mt-6 mb-6"></div>
+          <p className="text-gray-600 max-w-2xl text-lg">Tools and technologies for scalable mobile apps.</p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -56,10 +57,9 @@ const Skills = () => {
               key={idx}
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ y: -4, scale: 1.01 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1, duration: 0.2 }}
-              className="glass-card p-5 hover:border-purple-300 transition-all hover:shadow-md"
+              className="glass-card p-5"
             >
               <div className="flex items-center gap-3 mb-4">
                 <div className="p-2 bg-gray-100 rounded-lg border border-gray-200">

@@ -5,7 +5,7 @@ import ParticleText from './ui/ParticleText';
 
 const About = () => {
   return (
-    <section id="about" className="py-24 bg-gray-50 relative border-t border-gray-200 overflow-hidden">
+    <section id="about" className="py-24 lg:py-32 bg-gray-50 relative border-t border-gray-200 overflow-hidden">
       
       {/* Decorative Particle Background */}
       <div className="absolute inset-0 opacity-20 pointer-events-none">
@@ -17,12 +17,10 @@ const About = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12 flex flex-col items-center"
+          className="mb-24 text-center flex flex-col items-center"
         >
-          <div className="mb-4">
-            <TextPressure text="ABOUT ME" fontSize={48} />
-          </div>
-          <div className="w-16 h-1 bg-purple-600 rounded-full mb-8"></div>
+          <TextPressure text="ABOUT ME" fontSize={60} />
+          <div className="w-20 h-1 bg-purple-600 rounded-full mt-6 mb-6"></div>
           
           <div className="space-y-6 text-gray-600 text-lg leading-relaxed text-left md:text-center">
             <p>

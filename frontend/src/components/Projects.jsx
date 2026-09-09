@@ -53,7 +53,7 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-24 bg-white border-y border-gray-100">
+    <section id="projects" className="py-24 lg:py-32 bg-white border-y border-gray-100">
       <div className="max-w-6xl mx-auto px-6">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -78,7 +78,10 @@ const Projects = () => {
                 transition={{ duration: 0.6 }}
                 className="w-full lg:w-1/2 flex justify-center"
               >
-                <div className="relative mx-auto flex items-center justify-center w-full">
+                <div 
+                  data-cursor-variant="project"
+                  className="relative mx-auto flex items-center justify-center w-full cursor-none"
+                >
                   <img 
                     src={project.image} 
                     className="w-auto h-auto max-h-[600px] object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-500 rounded-[2.5rem]" 

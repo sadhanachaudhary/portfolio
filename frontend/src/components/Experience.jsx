@@ -21,12 +21,18 @@ const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="py-24 bg-white relative">
+    <section id="experience" className="py-24 lg:py-32 bg-white relative">
       <div className="max-w-4xl mx-auto px-6 relative z-10">
-        <div className="mb-16 flex flex-col items-center">
-          <TextPressure text="EXPERIENCE" fontSize={48} />
-          <div className="w-16 h-1 bg-purple-600 rounded-full mt-4 mb-4"></div>
-        </div>
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-24 text-center flex flex-col items-center"
+        >
+          <TextPressure text="EXPERIENCE" fontSize={60} />
+          <div className="w-20 h-1 bg-purple-600 rounded-full mt-6 mb-6"></div>
+          <p className="text-gray-600 max-w-2xl text-lg">My professional journey building robust, scalable applications.</p>
+        </motion.div>
 
         <div className="relative border-l-2 border-gray-200 pl-6 ml-3 space-y-10">
           <motion.div 

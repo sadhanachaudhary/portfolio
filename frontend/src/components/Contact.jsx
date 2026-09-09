@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Send, CheckCircle2, AlertCircle, Mail, Phone, MapPin } from 'lucide-react';
 
+import TextPressure from './ui/TextPressure';
+
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [status, setStatus] = useState('idle'); // idle, loading, success, error
@@ -42,7 +44,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 relative bg-gray-50 border-t border-gray-200">
+    <section id="contact" className="py-24 lg:py-32 relative bg-gray-50 border-t border-gray-200">
       <div className="max-w-6xl mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-16 items-center">
         
         {/* Left Side: Contact Info */}
@@ -50,11 +52,12 @@ const Contact = () => {
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          className="space-y-8"
+          className="space-y-8 text-center lg:text-left"
         >
-          <div>
-            <h2 className="text-4xl font-extrabold mb-4 text-gray-900">Let's Work Together</h2>
-            <p className="text-gray-600 text-lg leading-relaxed">
+          <div className="flex flex-col items-center lg:items-start">
+            <TextPressure text="CONTACT" fontSize={60} />
+            <div className="w-20 h-1 bg-purple-600 rounded-full mt-6 mb-6"></div>
+            <p className="text-gray-600 text-lg leading-relaxed max-w-md mx-auto lg:mx-0">
               Have a mobile app idea, need a robust offline-first architecture, or looking for a dedicated Flutter developer? Send me a message or reach out directly.
             </p>
           </div>
@@ -104,7 +107,7 @@ const Contact = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="bg-white border border-gray-200 shadow-sm p-8 md:p-10 rounded-2xl relative overflow-hidden"
+          className="glass-card p-8 md:p-10 relative overflow-hidden"
         >
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-600 to-indigo-500"></div>
           
