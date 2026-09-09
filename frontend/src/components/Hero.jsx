@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Download, Briefcase } from 'lucide-react';
 import GithubIcon from './icons/GithubIcon';
 import LinkedinIcon from './icons/LinkedinIcon';
+import Lanyard from './3d/Lanyard';
 
 const Hero = () => {
   return (
@@ -67,11 +68,15 @@ const Hero = () => {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative lg:h-[500px] flex justify-center items-center"
+          className="relative lg:h-[500px] w-full flex justify-center items-center"
         >
-          <div className="absolute inset-0 bg-gradient-to-tr from-purple-100 to-indigo-50 rounded-2xl transform rotate-3 scale-95 -z-10"></div>
+          <div className="absolute inset-0 bg-gradient-to-tr from-purple-100 to-indigo-50 rounded-2xl transform rotate-3 scale-95 -z-10 cursor-grab active:cursor-grabbing shadow-lg border border-purple-100">
+            <Suspense fallback={null}>
+              <Lanyard />
+            </Suspense>
+          </div>
           
-          <div className="relative">
+          <div className="relative pointer-events-none">
             <img 
               src="/profile.png" 
               alt="Sadhana Chaudhary" 
@@ -85,8 +90,7 @@ const Hero = () => {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.8 }}
-              whileHover={{ scale: 1.1 }}
-              className="absolute -right-6 lg:-right-8 top-10 z-20 flex items-center justify-center w-14 h-14 bg-white border border-gray-200 rounded-full text-gray-900 shadow-lg hover:border-purple-300"
+              className="absolute -right-6 lg:-right-8 top-10 z-20 flex items-center justify-center w-14 h-14 bg-white border border-gray-200 rounded-full text-gray-900 shadow-lg hover:border-purple-300 pointer-events-auto"
             >
               <GithubIcon size={24} />
             </motion.a>
@@ -98,8 +102,7 @@ const Hero = () => {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 1 }}
-              whileHover={{ scale: 1.1 }}
-              className="absolute -right-6 lg:-right-8 bottom-20 z-20 flex items-center justify-center w-14 h-14 bg-[#0A66C2] border border-[#0A66C2] rounded-full text-white shadow-lg hover:bg-[#004182]"
+              className="absolute -right-6 lg:-right-8 bottom-20 z-20 flex items-center justify-center w-14 h-14 bg-[#0A66C2] border border-[#0A66C2] rounded-full text-white shadow-lg hover:bg-[#004182] pointer-events-auto"
             >
               <LinkedinIcon size={24} />
             </motion.a>
@@ -109,7 +112,7 @@ const Hero = () => {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 1.2 }}
-              className="absolute -left-8 lg:-left-12 bottom-12 z-20 bg-white border border-gray-200 shadow-lg px-4 py-3 rounded-xl flex items-center gap-3"
+              className="absolute -left-8 lg:-left-12 bottom-12 z-20 bg-white border border-gray-200 shadow-lg px-4 py-3 rounded-xl flex items-center gap-3 pointer-events-auto"
             >
               <div className="p-2 bg-purple-100 text-purple-700 rounded-lg">
                 <Briefcase size={20} />

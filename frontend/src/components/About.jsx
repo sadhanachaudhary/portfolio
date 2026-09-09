@@ -1,18 +1,28 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import TextPressure from './ui/TextPressure';
+import ParticleText from './ui/ParticleText';
 
 const About = () => {
   return (
-    <section id="about" className="py-24 bg-gray-50 relative border-t border-gray-200">
+    <section id="about" className="py-24 bg-gray-50 relative border-t border-gray-200 overflow-hidden">
+      
+      {/* Decorative Particle Background */}
+      <div className="absolute inset-0 opacity-20 pointer-events-none">
+        <ParticleText text="HELLO" fontSize={150} />
+      </div>
+
       <div className="max-w-4xl mx-auto px-6 relative z-10">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-12 flex flex-col items-center"
         >
-          <h2 className="text-3xl font-extrabold mb-4 text-gray-900">About Me</h2>
-          <div className="w-16 h-1 bg-purple-600 rounded-full mx-auto mb-8"></div>
+          <div className="mb-4">
+            <TextPressure text="ABOUT ME" fontSize={48} />
+          </div>
+          <div className="w-16 h-1 bg-purple-600 rounded-full mb-8"></div>
           
           <div className="space-y-6 text-gray-600 text-lg leading-relaxed text-left md:text-center">
             <p>

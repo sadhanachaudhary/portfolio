@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink, ShoppingBag, Truck, Database, CheckCircle2 } from 'lucide-react';
+import TextPressure from './ui/TextPressure';
+import Magnet from './ui/Magnet';
 
 const Projects = () => {
   const projects = [
@@ -57,11 +59,11 @@ const Projects = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-24 text-center"
+          className="mb-24 text-center flex flex-col items-center"
         >
-          <h2 className="text-4xl font-extrabold mb-4 text-gray-900 tracking-tight">Featured Mobile Apps</h2>
-          <div className="w-20 h-1 bg-purple-600 rounded-full mx-auto mb-6"></div>
-          <p className="text-gray-600 max-w-2xl mx-auto text-lg">Real-world, production-ready applications I've built from scratch, currently available on the Play Store.</p>
+          <TextPressure text="PROJECTS" fontSize={60} />
+          <div className="w-20 h-1 bg-purple-600 rounded-full mt-6 mb-6"></div>
+          <p className="text-gray-600 max-w-2xl text-lg">Real-world, production-ready applications I've built from scratch, currently available on the Play Store.</p>
         </motion.div>
 
         <div className="space-y-32">
@@ -119,20 +121,23 @@ const Projects = () => {
                 </div>
 
                 <div className="pt-6">
-                  <a 
-                    href={project.playStore} 
-                    target="_blank" 
-                    rel="noreferrer" 
-                    className="inline-flex items-center gap-3 px-6 py-3 bg-black hover:bg-gray-800 text-white rounded-xl transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 mx-auto lg:mx-0"
-                  >
-                    <svg className="w-7 h-7" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M3.609 1.814L13.792 12 3.61 22.186a1.986 1.986 0 01-.587-1.42V3.235c0-.528.204-1.034.586-1.421zM14.542 12.75l2.625 2.626-6.177 3.567 3.552-6.193zm0-1.5l-3.552-6.193 6.177 3.567-2.625 2.626zm4.12 1.55l3.208-1.854a.998.998 0 000-1.728l-3.208-1.853-2.95 2.95 2.95 2.95 2.95-2.95z"/>
-                    </svg>
-                    <div className="text-left flex flex-col">
-                      <span className="text-[9px] font-medium leading-none uppercase tracking-wider text-gray-300 mb-0.5">Get it on</span>
-                      <span className="text-base font-bold leading-none">Google Play</span>
-                    </div>
-                  </a>
+                  <Magnet padding={20}>
+                    <a 
+                      href={project.playStore} 
+                      target="_blank" 
+                      rel="noreferrer" 
+                      data-cursor="Download"
+                      className="inline-flex items-center gap-3 px-6 py-3 bg-black hover:bg-gray-800 text-white rounded-xl transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 mx-auto lg:mx-0"
+                    >
+                      <svg className="w-7 h-7" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M3.609 1.814L13.792 12 3.61 22.186a1.986 1.986 0 01-.587-1.42V3.235c0-.528.204-1.034.586-1.421zM14.542 12.75l2.625 2.626-6.177 3.567 3.552-6.193zm0-1.5l-3.552-6.193 6.177 3.567-2.625 2.626zm4.12 1.55l3.208-1.854a.998.998 0 000-1.728l-3.208-1.853-2.95 2.95 2.95 2.95 2.95-2.95z"/>
+                      </svg>
+                      <div className="text-left flex flex-col">
+                        <span className="text-[9px] font-medium leading-none uppercase tracking-wider text-gray-300 mb-0.5">Get it on</span>
+                        <span className="text-base font-bold leading-none">Google Play</span>
+                      </div>
+                    </a>
+                  </Magnet>
                 </div>
               </motion.div>
 

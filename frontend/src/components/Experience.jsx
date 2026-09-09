@@ -1,20 +1,32 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Briefcase } from 'lucide-react';
+import { Briefcase, Building2, Calendar, MapPin, ExternalLink } from 'lucide-react';
+import TextPressure from './ui/TextPressure';
 
 const Experience = () => {
+  const experiences = [
+    {
+      title: "Flutter Developer",
+      company: "DIFMO Pvt Ltd",
+      location: "Lucknow, India",
+      period: "Nov 2023 - Present",
+      description: [
+        "Architecting and developing offline-first mobile applications using Flutter and Riverpod.",
+        "Implemented secure local storage using SQLite and WatermelonDB for seamless offline usage.",
+        "Integrated real-time chat and notifications using WebSockets and Firebase.",
+        "Reduced app load time by 40% through lazy loading and asset optimization."
+      ],
+      link: "https://difmo.com"
+    }
+  ];
+
   return (
-    <section id="experience" className="py-20 relative bg-gray-50 border-t border-gray-200">
-      <div className="max-w-4xl mx-auto px-6">
-        <motion.div 
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-12"
-        >
-          <h2 className="text-3xl font-extrabold mb-3 text-gray-900">Experience</h2>
-          <div className="w-16 h-1 bg-purple-600 rounded-full"></div>
-        </motion.div>
+    <section id="experience" className="py-24 bg-white relative">
+      <div className="max-w-4xl mx-auto px-6 relative z-10">
+        <div className="mb-16 flex flex-col items-center">
+          <TextPressure text="EXPERIENCE" fontSize={48} />
+          <div className="w-16 h-1 bg-purple-600 rounded-full mt-4 mb-4"></div>
+        </div>
 
         <div className="relative border-l-2 border-gray-200 pl-6 ml-3 space-y-10">
           <motion.div 

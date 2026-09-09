@@ -12,10 +12,12 @@ import GithubProfile from './components/GithubProfile';
 import ResumeCTA from './components/ResumeCTA';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import CustomCursor from './components/ui/CustomCursor';
 
 function App() {
   return (
     <div className="bg-gray-50 min-h-screen text-gray-700 font-sans selection:bg-purple-500/30">
+      <CustomCursor />
       <Navbar />
       <Hero />
       <TechMarquee />

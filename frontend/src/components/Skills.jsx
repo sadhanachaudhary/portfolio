@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Smartphone, Layers, Wifi, Database, Wrench, Cloud } from 'lucide-react';
+import TextPressure from './ui/TextPressure';
 
 const Skills = () => {
   const categories = [
@@ -43,10 +44,10 @@ const Skills = () => {
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-10 text-center"
+          className="mb-10 flex flex-col items-center"
         >
-          <h2 className="text-3xl font-extrabold mb-3 text-gray-900">Technical Arsenal</h2>
-          <p className="text-gray-500 text-sm font-medium">Tools and technologies for scalable mobile apps.</p>
+          <TextPressure text="SKILLS" fontSize={48} />
+          <p className="text-gray-500 text-sm font-medium mt-4">Tools and technologies for scalable mobile apps.</p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
