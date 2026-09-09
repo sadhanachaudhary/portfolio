@@ -70,7 +70,14 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="relative lg:h-[500px] w-full flex justify-center items-center"
         >
-          <div className="absolute inset-0 bg-gradient-to-tr from-purple-100 to-indigo-50 rounded-2xl transform rotate-3 scale-95 -z-10 cursor-grab active:cursor-grabbing shadow-lg border border-purple-100">
+          <div className="absolute inset-0 bg-gradient-to-tr from-purple-100 to-indigo-50 rounded-2xl transform rotate-3 scale-95 -z-10 cursor-grab active:cursor-grabbing shadow-lg border border-purple-100 overflow-hidden">
+            {/* Decorative Metal Pin to cover the browser's WebGL crash icon area */}
+            <div className="absolute -top-1 -left-1 z-20 w-10 h-10 flex items-center justify-center pointer-events-none">
+              <div className="w-6 h-6 bg-gradient-to-br from-gray-300 to-gray-600 rounded-full shadow-[0_2px_4px_rgba(0,0,0,0.3)] border border-gray-400 flex items-center justify-center">
+                <div className="w-2 h-2 bg-gradient-to-tr from-gray-700 to-gray-900 rounded-full shadow-inner"></div>
+              </div>
+            </div>
+            
             <Suspense fallback={null}>
               <Lanyard />
             </Suspense>

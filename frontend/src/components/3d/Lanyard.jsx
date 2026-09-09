@@ -32,7 +32,7 @@ function Band() {
   const band = useRef()
   const fixed = useRef()
   const card = useRef()
-  
+
   // Reusable vectors to prevent garbage collection and memory leaks in useFrame
   const vec = useMemo(() => new THREE.Vector3(), [])
   const dir = useMemo(() => new THREE.Vector3(), [])
@@ -60,13 +60,13 @@ function Band() {
       dir.copy(vec).sub(state.camera.position).normalize()
       vec.add(dir.multiplyScalar(state.camera.position.length()))
       card.current.wakeUp()
-      
+
       // Apply spring-like forces towards the mouse instead of forcing kinematic position
       const currentPos = card.current.translation()
       const targetX = vec.x - dragged.x
       const targetY = vec.y - dragged.y
       const targetZ = vec.z - dragged.z
-      
+
       // Calculate delta and apply as impulse
       const force = {
         x: (targetX - currentPos.x) * 2,
@@ -75,26 +75,26 @@ function Band() {
       }
       card.current.applyImpulse(force, true)
     }
-    
+
     if (fixed.current && card.current && band.current) {
       const t0 = fixed.current.translation();
       const t1 = card.current.translation();
-      
+
       if (isNaN(t0.x) || isNaN(t1.x)) return;
 
       v1.set(t0.x, t0.y, t0.z);
       v2.set(t1.x, t1.y + 1.5, t1.z); // Attach to clip
-      
+
       // Zero-allocation geometry update for the string
       const distance = v1.distanceTo(v2);
       band.current.scale.set(1, distance, 1);
-      
+
       mid.copy(v1).lerp(v2, 0.5);
       band.current.position.copy(mid);
-      
+
       dir.subVectors(v2, v1).normalize();
       band.current.quaternion.setFromUnitVectors(up, dir);
-      
+
       // Tilt the card smoothly
       dir.copy(card.current.translation())
       const clamp = Math.max(Math.min(dir.x, 1), -1)
@@ -106,10 +106,10 @@ function Band() {
     <>
       <group position={[0, 4, 0]}>
         <RigidBody ref={fixed} type="fixed" />
-        
-        <RigidBody 
-          position={[0, -2, 0]} 
-          ref={card} 
+
+        <RigidBody
+          position={[0, -2, 0]}
+          ref={card}
           type="dynamic"
           linearDamping={2}
           angularDamping={2}
@@ -124,25 +124,20 @@ function Band() {
             drag(new THREE.Vector3().copy(e.point).sub(vec.copy(card.current.translation())))
           }}
         >
-          {/* Card Mesh */}
-          <mesh castShadow receiveShadow>
+          {/* Invisible physics collider */}
+          <mesh visible={false}>
             <boxGeometry args={[2, 3, 0.1]} />
             <meshStandardMaterial color="#863bff" />
-            <Center position={[0, 0, 0.06]}>
-               <mesh>
-                 <planeGeometry args={[1.8, 2.8]}/>
-                 <meshBasicMaterial color="#ffffff"/>
-               </mesh>
-            </Center>
-            {/* Lanyard Clip */}
-            <mesh position={[0, 1.6, 0]}>
-              <cylinderGeometry args={[0.1, 0.1, 0.2]} />
-              <meshStandardMaterial color="silver" metalness={0.8} roughness={0.2} />
-            </mesh>
+          </mesh>
+          
+          {/* Lanyard Clip - Visible */}
+          <mesh position={[0, 1.6, 0]}>
+            <cylinderGeometry args={[0.1, 0.1, 0.2]} />
+            <meshStandardMaterial color="silver" metalness={0.8} roughness={0.2} />
           </mesh>
         </RigidBody>
       </group>
-      
+
       {/* Lanyard String */}
       <mesh ref={band}>
         <cylinderGeometry args={[0.02, 0.02, 1, 8]} />
